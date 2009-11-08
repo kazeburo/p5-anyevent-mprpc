@@ -22,7 +22,7 @@ use AnyEvent::Handle;
             my $succeeded = 0;
             my $buffer = delete $_[0]{rbuf} or return;
             while (1) {
-                $nread = $unpacker->execute($buffer, $nread);
+                $nread = $unpacker->execute($buffer, 0);
                 if ($unpacker->is_finished) {
                     my $ret = $unpacker->data;
                     $cb->( $_[0], $ret );
